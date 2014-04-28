@@ -23,7 +23,7 @@ namespace seaBattle
     {
         private bool[,] matrix;
 
-        private Rectangle[,] rectangleMatrix;
+        private ShipRectangle[,] rectangleMatrix;
 
         public MainWindow()
         {
@@ -56,8 +56,8 @@ namespace seaBattle
 
             matrix = autoGenerationFild.GetFilledIn();
 
-            rectangleMatrix = new Rectangle[10, 10];
-
+            rectangleMatrix = new ShipRectangle[10, 10];
+            
             for (int i = 0; i < 10; i++)
                 for (int j = 0; j < 10; j++)
                 {
@@ -70,8 +70,8 @@ namespace seaBattle
                     rec.SetValue(Grid.RowProperty, i);
                     rec.SetValue(Grid.ColumnProperty, j);
                     CompField.Children.Add(rec);
-
-                    rectangleMatrix[i, j] = rec;
+                    rectangleMatrix[i, j] = new ShipRectangle();
+                    rectangleMatrix[i, j].rectangle = rec;
                 }
         }
 
@@ -83,7 +83,7 @@ namespace seaBattle
             int numbereOfColumn = (int)Math.Floor(x / 50);
             int numbereOfRow = (int)Math.Floor(y / 50);
 
-            rectangleMatrix[numbereOfRow, numbereOfColumn].Fill = Brushes.Black;
+            rectangleMatrix[numbereOfRow, numbereOfColumn].rectangle.Fill = Brushes.Black;
 
         }
     }
