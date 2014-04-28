@@ -21,6 +21,10 @@ namespace seaBattle
     /// </summary>
     public partial class MainWindow : Window
     {
+        private bool[,] matrix;
+
+        private Rectangle[,] rectangleMatrix;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -50,7 +54,10 @@ namespace seaBattle
         {
             AutoGenerationFild autoGenerationFild = new AutoGenerationFild();
 
-            var matrix= autoGenerationFild.GetFilledIn();
+            matrix = autoGenerationFild.GetFilledIn();
+
+            rectangleMatrix = new Rectangle[10, 10];
+
             for (int i = 0; i < 10; i++)
                 for (int j = 0; j < 10; j++)
                 {
@@ -64,7 +71,20 @@ namespace seaBattle
                     rec.SetValue(Grid.ColumnProperty, j);
                     CompField.Children.Add(rec);
 
+                    rectangleMatrix[i, j] = rec;
                 }
+        }
+
+        private void CompField_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            var x = e.GetPosition(null).X - 25;
+            var y = e.GetPosition(null).Y - 50;
+
+            int numbereOfColumn = (int)Math.Floor(x / 50);
+            int numbereOfRow = (int)Math.Floor(y / 50);
+
+            rectangleMatrix[numbereOfRow, numbereOfColumn].Fill = Brushes.Black;
+
         }
     }
 }

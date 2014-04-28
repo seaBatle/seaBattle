@@ -1,10 +1,11 @@
 ﻿<Window x:Class="seaBattle.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="MainWindow" Height="595.331" Width="1097.503">
+        Title="MainWindow" Height="766.331" Width="1148.503">
     <Grid x:Name="la">
-        <Grid x:Name="CompField" HorizontalAlignment="Left"  Height="399"  ShowGridLines="True" Margin="24,51,0,0" VerticalAlignment="Top" Width="399">
+        <Grid x:Name="CompField" HorizontalAlignment="Left"  Height="532"  ShowGridLines="True" Margin="25,50,0,0" VerticalAlignment="Top" Width="544" MouseDown="CompField_MouseDown">
             <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
                 <RowDefinition Height="50"/>
                 <RowDefinition Height="50"/>
                 <RowDefinition Height="50"/>
@@ -25,10 +26,13 @@
                 <ColumnDefinition Width="50"/>
                 <ColumnDefinition Width="50"/>
                 <ColumnDefinition Width="50"/>
+                <ColumnDefinition Width="50"/>
+                <ColumnDefinition/>
             </Grid.ColumnDefinitions>
         </Grid>
-        <Grid HorizontalAlignment="Left"  Height="399" ShowGridLines="True" Margin="600,51,0,0" VerticalAlignment="Top" Width="399">
+        <Grid HorizontalAlignment="Left"  Height="534" ShowGridLines="True" Margin="600,48,0,0" VerticalAlignment="Top" Width="461">
             <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
                 <RowDefinition Height="50"/>
                 <RowDefinition Height="50"/>
                 <RowDefinition Height="50"/>
@@ -40,6 +44,7 @@
                 <RowDefinition Height="50"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="50"/>
                 <ColumnDefinition Width="50"/>
                 <ColumnDefinition Width="50"/>
                 <ColumnDefinition Width="50"/>
