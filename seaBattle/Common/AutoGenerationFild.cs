@@ -10,13 +10,13 @@ namespace seaBattle.Common
     public class AutoGenerationFild
     {
         private bool[,] BattleField = new bool[10, 10];
-        private bool CanFilledIn(bool x,int min,int max, int pos)
+        private bool CanFilledIn(bool isx,int min,int max, int pos)
         {
             int Error=0;
             if ((min>=0) && ( max <=9) && (max>=min) && (pos>=0) && (pos<=9))
             {
             int minYAvail, minXAvail, maxYAvail, maxXAvail;
-            if (x) 
+            if (isx) 
             {
                 if (min > 0) { minXAvail = min - 1; }
                 else { minXAvail = min; };
@@ -42,17 +42,10 @@ namespace seaBattle.Common
 
             for (int i = minXAvail;i<=maxXAvail;i++)
             {
-            for (int j = minYAvail;j<=maxYAvail;j++)
-            {
-               if (x)
-               { 
-                   if (BattleField[i,j]) { Error = 1; }
-               }
-               else
-               {
-                   if (BattleField[j, i]) { Error = 1; }
-               };
-            };
+                for (int j = minYAvail;j<=maxYAvail;j++)
+                {
+                       if (BattleField[i,j]) { Error = 1; }
+                };
             };
             if (Error == 0) { return true; }
             else { return false; };
@@ -71,8 +64,8 @@ namespace seaBattle.Common
             Random rand = new Random();
             do
             {
-            x = rand.Next(10);
-            y = rand.Next(10);            
+            x = rand.Next(0,9);
+            y = rand.Next(0,9);
             navi = rand.Next(1, 4);
             switch (navi)
             {
